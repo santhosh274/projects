@@ -31,5 +31,25 @@
             document.body.classList.add('loaded');
         });
     </script>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <script>
+            window.onload = function() {
+                {% for category, message in messages %}
+                    alert("{{ message }}");
+                {% endfor %}
+            };
+        </script>
+    {% endif %}
+{% endwith %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const message = "{{ message }}";
+        if (message) {
+            alert(message);
+        }
+    });
+</script>
+
 </body>
 </html>
