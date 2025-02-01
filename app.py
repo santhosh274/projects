@@ -3,6 +3,17 @@ from pymongo import MongoClient
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Configure email details using environment variables
+SMTP_SERVER = os.getenv("SMTP_SERVER")
+SMTP_PORT = int(os.getenv("SMTP_PORT", 587))  # Default to 587 if not set
+SENDER_EMAIL = os.getenv("SENDER_EMAIL")
+SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
 
 app = Flask(__name__)
 
@@ -11,10 +22,8 @@ db = client["login"]
 users_collection = db["users"]
 
 # Configure email details
-SMTP_SERVER = "smtp.gmail.com"  # Use the SMTP server for your email provider
-SMTP_PORT = 587  # Common port for TLS
-SENDER_EMAIL = "santhoshkumarr.a7@gmail.com"  # Replace with your email
-SENDER_PASSWORD = "zigr uuoo rbvv esdq"  # Replace with your email password
+  # Replace with your email
+  # Replace with your email password
 
 # Function to send an email and update password in DB
 def send_reset_email(user_email, username):
@@ -104,6 +113,7 @@ def register():
 
 @app.route("/forget", methods=["GET", "POST"])
 def forgetpass():
+    message = ""
     if request.method == "POST":
         username = request.form["username"]
         email = request.form["email"]
@@ -112,13 +122,16 @@ def forgetpass():
         user = users_collection.find_one({"username": username, "email": email})
 
         if user:
-            # Send email with new password and update DB
             send_reset_email(email, username)
-            return "A new password has been sent to your email."
+            message = "A new password has been sent to your email."
+        else:
+            message = "No user found with the provided username and email."
 
-        return "No user found with the provided username and email."
+    return render_template("forget.html", message=message)
 
-    return render_template("forget.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
