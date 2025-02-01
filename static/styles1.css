@@ -1,0 +1,163 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b); /* Dark gradient */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+/* Apply the transition effect to the body element */
+body {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out; /* Smooth fade effect */
+}
+
+/* Page content is visible after loading */
+body.loaded {
+    opacity: 1;
+}
+
+/* Blurred background blob */
+.background-blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.2);
+    filter: blur(100px);
+    border-radius: 50%;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Translucent container */
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Glassmorphic effect */
+.box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 40px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Typography */
+h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #cbd5e1;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #3b82f6;
+    transform: scale(1.05);
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+/* Button */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #2563eb;
+}
+
+/* Links */
+.forgot-password, .signup-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+.signup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.signup-box{
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 380px;
+    padding: 40px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    backdrop-filter: blur(12px);
+}
+.forgot-password a, .signup-link a {
+    color: #68a2ff;
+    text-decoration: none;
+}
+
+.forgot-password a:hover, .signup-link a:hover {
+    text-decoration: underline;
+}
+.login-link{
+    color: #ffffff;
+}
+
+.login-link a{
+    color:#68a2ff
+}
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .box {
+        width: 90%;
+        padding: 30px 20px;
+    }
+}

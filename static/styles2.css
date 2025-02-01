@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+/* Apply the transition effect to the body element */
+body {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out; /* Smooth fade effect */
+}
+
+/* Page content is visible after loading */
+body.loaded {
+    opacity: 1;
+}
+
+/* Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Box for the form */
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+/* Typography */
+h2 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #e2e8f0;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 14px;
+    color: #e2e8f0;
+}
+
+input {
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+input:focus {
+    border-color: #3b82f6;
+    transform: scale(1.02);
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+/* Submit Button */
+button {
+    padding: 14px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* Back to Login Link */
+.back-to-login {
+    margin-top: 20px;
+}
+
+.back-to-login a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: text-decoration 0.3s;
+}
+
+.back-to-login a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .login-box {
+        width: 90%;
+        padding: 25px;
+    }
+}
